@@ -40,7 +40,7 @@ else //morreu
 		//spawnando algum item qnd morre
 		// define as probabilidades de ocorrência de cada objeto
 		var objeto1_chance = 0.25; // 25% de chance
-		var objeto2_chance = 0.25; // 25% de chance
+		var objeto2_chance = 0.50; // 25% de chance
 		var objeto3_chance = 0.25; // 25% de chance
 		var yy = 600;
 

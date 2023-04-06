@@ -160,6 +160,7 @@ switch(estado)
 #region tiro
 if shoot && pode_atirar && obj_player_stats.municao_pente > 0 && !recarregando
 {
+	velx = 0;
 	obj_player_stats.municao_pente--;
 	if obj_player_stats.municao_pente <= 0
 	{
@@ -221,12 +222,23 @@ if !pode_atirar
 #endregion
 
 #region tomando dano
-var inim = place_meeting(x, y, obj_inim_pai)
+var inim = place_meeting(x, y, obj_inim_pai);
+var salvador = place_meeting(x, y, obj_salvador);
 if inim && !perdeu_vida
 {
+	
 		obj_player_stats.vida += 1;
 		perdeu_vida = true;
 }
+else if salvador && !perdeu_vida
+{
+	
+		obj_player_stats.vida = 3;
+		perdeu_vida = true;
+}
+
+
+//timer qnd perde vida
 if perdeu_vida
 {
 	t_vida--;
@@ -240,9 +252,19 @@ if perdeu_vida
 #endregion
 
 //aparecendo o para apertar e para interarir
-if place_meeting(x, y, obj_next_level) && !instance_exists(obj_inim_pai) or place_meeting(x, y, obj_itens)
+if place_meeting(x, y, obj_next_level) or place_meeting(x, y, obj_itens)
 {
-	interact = true;
+	if room == Room2
+	{
+		if !instance_exists(obj_inim_pai)
+		{
+			interact = true;
+		}
+	}
+	else
+	{	
+		interact = true;
+	}
 }
 else
 {

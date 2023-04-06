@@ -2,10 +2,7 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "objcerca",
-  "spriteId": {
-    "name": "spr_cerca",
-    "path": "sprites/spr_cerca/spr_cerca.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,

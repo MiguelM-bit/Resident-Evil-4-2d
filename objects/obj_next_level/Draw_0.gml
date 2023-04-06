@@ -3,3 +3,7 @@
 
 
 
+if room == rn_test
+{
+	draw_self();
+}

@@ -3,9 +3,9 @@
 // Inherit the parent event
 event_inherited();
 
-sprite_index = choose(spr_inimigo0, spr_inimigo1, spr_inimigo2);
+sprite_index = choose(spr_inimigo0, spr_inimigo1, spr_inimigo2, spr_inimigo3);
 
-vida = 3;
+vida = 4;
 vida2 = 4;
 
 rodou = false;

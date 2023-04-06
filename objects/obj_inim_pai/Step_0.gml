@@ -21,11 +21,27 @@ if player
 		
 			//parado
 			velx = 0;
-		
-			//se estiver perto muda o estado para andando
-			if distance_to_object(obj_player) < 748
+			
+			if room == Room5 //na vila
 			{
-				estado = inim_state.andando;
+				//se estiver perto muda o estado para andando
+				if distance_to_object(obj_player) < 975
+				{
+					estado = inim_state.andando;
+				}
+				
+				if obj_spawn_vila.rodou
+				{
+					estado = inim_state.andando;
+				}
+			}
+			else
+			{			
+				//se estiver perto muda o estado para andando
+				if distance_to_object(obj_player) < 975
+				{
+					estado = inim_state.andando;
+				}
 			}
 		
 		
@@ -40,6 +56,7 @@ if player
 	
 			//movendo
 			velx = lerp(velx, (dir - esq) * vel, acel);
+		
 	
 			if distance_to_object(obj_player) > 128
 			{
@@ -69,12 +86,25 @@ if player
 					}
 				}
 			}
-			
-			
-			//se estiver longe muda o estado para parado
-			if distance_to_object(obj_player) > 512
+				
+			if room == Room5 
 			{
-				estado = inim_state.parado;
+				if !obj_spawn_vila.rodou
+				{
+					//se estiver longe muda o estado para parado
+					if distance_to_object(obj_player) > 512
+					{
+						estado = inim_state.parado;
+					}
+				}
+			}
+			else
+			{
+				//se estiver longe muda o estado para parado
+				if distance_to_object(obj_player) > 512
+				{
+					estado = inim_state.parado;
+				}
 			}
 		
 		break;
@@ -84,6 +114,30 @@ if player
 }
 	
 
+
+//if velx != 0 && chao
+//{
+	var wobbleFrequency = .05,
+		wobbleAmount = .03,
+		spd = 2.3,
+		acl = .15;
+		
+	var value = 1 + sin(current_time / wobbleFrequency) * wobbleAmount * spd;
+		
+		//verificando em qual lado estou
+		if x_scale < 0 // esquerda
+		{
+			//achantando o player
+			xscale = lerp(xscale, -value, acl);
+		}
+		else
+		{
+			//achantando o player
+			xscale = lerp(xscale, value, acl);
+		}
+		
+	yscale = lerp(yscale, value, acl);
+//}
 
 if !place_meeting(x, y, obj_player)
 {

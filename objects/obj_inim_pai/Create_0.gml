@@ -6,7 +6,7 @@ vely = 0;
 grav = .5;
 
 acel = .05;
-vel = 3.15;
+vel = 3.5;
 
 jump_force = 10;
 
